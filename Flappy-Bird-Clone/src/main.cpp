@@ -6,10 +6,12 @@
 //  Copyright © 2019 Túlio Henrique. All rights reserved.
 //
 
-#include <iostream>
+#include "WindowManager.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    WindowManager windowManager;
+    
+    windowManager.loop();
+    
     return 0;
 }
