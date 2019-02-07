@@ -29,8 +29,10 @@ public:
     void init();
     
     inline Shader* getBackgroundShader() { return m_backgroundShader.get(); }
+    inline Shader* getBirdShader() { return m_birdShader.get(); }
 private:
     std::shared_ptr<Shader> m_backgroundShader;
+    std::shared_ptr<Shader> m_birdShader;
 };
 
 #endif /* ShadersManager_h */

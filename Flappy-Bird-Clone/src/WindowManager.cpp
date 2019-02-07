@@ -9,6 +9,7 @@
 #include "WindowManager.h"
 
 #include <iostream>
+#include <chrono>
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
@@ -42,7 +43,7 @@ WindowManager::WindowManager()
 //    const GLFWvidmode* vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 //    glfwSetWindowPos(m_window, vidMode->width / 2, vidMode->height / 2);
     
-//    InputHandler::getInstance().bind(m_window);
+    InputHandler::getInstance().bind(m_window); 
     
     glfwMakeContextCurrent(m_window);
     glfwSwapInterval(1);
@@ -51,36 +52,63 @@ WindowManager::WindowManager()
         std::cout << "Error! Faild to initialize GLEW." << std::endl;
     }
     
+    GLCall(glActiveTexture(GL_TEXTURE0 + 0));
+    
     glm::mat4 pr_matrix = glm::ortho<float>(-10.0f, 10.0f, -10.0f * 9.0f / 16.0f, 10.0f * 9.0f / 16.0f, -1.0, 1.0f);
     
     ShadersManager::getInstance().init();
-    ShadersManager::getInstance().getBackgroundShader()->Bind();
     ShadersManager::getInstance().getBackgroundShader()->SetUniformMat4f("pr_matrix", pr_matrix);
-    ShadersManager::getInstance().getBackgroundShader()->Unbind();
+    ShadersManager::getInstance().getBackgroundShader()->SetUniform1i("u_Texture", 0);
+    ShadersManager::getInstance().getBirdShader()->SetUniformMat4f("pr_matrix", pr_matrix);
+    ShadersManager::getInstance().getBirdShader()->SetUniform1i("u_Texture", 0);
     
     m_level = std::shared_ptr<Level>(new Level());
 }
 
 WindowManager::~WindowManager() {
+    glfwDestroyWindow(m_window);
     glfwTerminate();
 }
 
 void WindowManager::loop() {
-    while(!glfwWindowShouldClose(m_window)) {
-        update();
+    long lastTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+    double delta = 0.0;
+    double ns = 1000000000.0 / 60.0;
+    long timer = std::chrono::system_clock::now().time_since_epoch().count();
+    int updates = 0;
+    int frames = 0;
+    
+    while (!glfwWindowShouldClose(m_window)) {
+        long now = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+        delta += (now - lastTime) / ns;
+        lastTime = now;
+        
+        if (delta >= 1.0) {
+            update();
+            updates++;
+            delta--;
+        }
+        
         render();
+        frames++;
+        
+        long currentTime = std::chrono::system_clock::now().time_since_epoch().count();
+        
+        if (currentTime - timer > 1000) {
+            timer += 1000;
+            updates = 0;
+            frames = 0;
+        }
     }
 }
 
 void WindowManager::update() {
     glfwPollEvents();
-    if (InputHandler::getInstance().getPressedKeys()[GLFW_KEY_SPACE] == GLFW_RELEASE) {
-        //        std::cout << "FLAP!" << std::endl;
-    }
+    m_level->Update();
 }
 
 void WindowManager::render() {
-    GLCall(glClearColor(0.2f, 0.3f, 0.3f, 1.0f));
+    GLCall(glClearColor(1.0f, 1.0f, 1.0f, 1.0f));
     GLCall(glClear(GL_COLOR_BUFFER_BIT));
     
     m_level->Render();

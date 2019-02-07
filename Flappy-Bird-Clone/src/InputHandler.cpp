@@ -17,5 +17,9 @@ void InputHandler::_glfwKeyCallback(GLFWwindow* window, int key, int scancode, i
 }
 
 void InputHandler::glfwKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    m_pressedKeys[key] = action;
+    m_pressedKeys[key] = action != GLFW_RELEASE;
+}
+
+bool InputHandler::isKeyDown(int keycode) {
+    return m_pressedKeys[keycode];
 }

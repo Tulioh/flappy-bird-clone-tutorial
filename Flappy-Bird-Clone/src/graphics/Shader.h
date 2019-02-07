@@ -22,16 +22,13 @@ struct ShaderProgramSources {
 };
 
 class Shader {
-private:
-    unsigned int m_RendererID;
-    std::unordered_map<std::string, int> m_UniformLocationCache;
 public:
     Shader() {}
     Shader(const std::string& filename);
     ~Shader();
     
-    void Bind() const;
-    void Unbind() const;
+    void Bind();
+    void Unbind();
     
     // Set uniforms
     void SetUniform1i(const std::string& name, int value);
@@ -49,6 +46,12 @@ private:
     unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
     
     int GetUniformLocation(const std::string& name);
+    
+    void bindIfNecessary();
+    
+    bool m_binded;
+    unsigned int m_RendererID;
+    std::unordered_map<std::string, int> m_UniformLocationCache;
 };
 
 #endif /* Shader_h */

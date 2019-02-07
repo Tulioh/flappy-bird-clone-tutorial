@@ -19,6 +19,7 @@
 		59AF23062208895E000DE2BE /* GLDebugger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59AF23042208895E000DE2BE /* GLDebugger.cpp */; };
 		59AF230B220898C2000DE2BE /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59AF2309220898C2000DE2BE /* VertexArray.cpp */; };
 		59B34D8B220A6EFE002D24E1 /* glm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59B34CCE220A6EFE002D24E1 /* glm.cpp */; };
+		59CA41BC220BC04400E5E659 /* Bird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59CA41BA220BC04400E5E659 /* Bird.cpp */; };
 		59D47D462207C6E6004766A1 /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59D47D442207C6E6004766A1 /* InputHandler.cpp */; };
 		59D47D492207CC82004766A1 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59D47D472207CC82004766A1 /* WindowManager.cpp */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,9 @@
 		590DF0DA22076CD800423E33 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		590DF0DC22076D0400423E33 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../../usr/local/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		590DF0DE22076E0600423E33 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
+		5939261C220B3BBC009937AA /* pipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pipe.png; sourceTree = "<group>"; };
+		5939261D220B3BBC009937AA /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		5939261E220B3BBC009937AA /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird.png; sourceTree = "<group>"; };
 		599471472209DD3000E49EDE /* Level.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		599471482209DD3000E49EDE /* Level.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		5994714A2209DFDE00E49EDE /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
@@ -429,6 +433,9 @@
 		59B34D88220A6EFE002D24E1 /* rotate_normalized_axis.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rotate_normalized_axis.hpp; sourceTree = "<group>"; };
 		59B34D89220A6EFE002D24E1 /* projection.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = projection.inl; sourceTree = "<group>"; };
 		59B34D8A220A6EFE002D24E1 /* type_aligned.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = type_aligned.hpp; sourceTree = "<group>"; };
+		59CA41BA220BC04400E5E659 /* Bird.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bird.cpp; sourceTree = "<group>"; };
+		59CA41BB220BC04400E5E659 /* Bird.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
+		59CA41BD220BC28300E5E659 /* bird.shader */ = {isa = PBXFileReference; lastKnownFileType = text; path = bird.shader; sourceTree = "<group>"; };
 		59D47D442207C6E6004766A1 /* InputHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
 		59D47D452207C6E6004766A1 /* InputHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputHandler.h; sourceTree = "<group>"; };
 		59D47D472207CC82004766A1 /* WindowManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
@@ -495,11 +502,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5939261B220B3B7A009937AA /* textures */ = {
+			isa = PBXGroup;
+			children = (
+				5939261D220B3BBC009937AA /* bg.jpg */,
+				5939261E220B3BBC009937AA /* bird.png */,
+				5939261C220B3BBC009937AA /* pipe.png */,
+			);
+			path = textures;
+			sourceTree = "<group>";
+		};
 		599471462209DD2700E49EDE /* level */ = {
 			isa = PBXGroup;
 			children = (
 				599471472209DD3000E49EDE /* Level.cpp */,
 				599471482209DD3000E49EDE /* Level.h */,
+				59CA41BA220BC04400E5E659 /* Bird.cpp */,
+				59CA41BB220BC04400E5E659 /* Bird.h */,
 			);
 			path = level;
 			sourceTree = "<group>";
@@ -517,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				599471562209EE5C00E49EDE /* background.shader */,
+				59CA41BD220BC28300E5E659 /* bird.shader */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -541,6 +561,7 @@
 		59B34C0F2209F315002D24E1 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				5939261B220B3B7A009937AA /* textures */,
 				599471542209EE2A00E49EDE /* shaders */,
 			);
 			path = resources;
@@ -1042,6 +1063,7 @@
 				5994714C2209DFDE00E49EDE /* Texture.cpp in Sources */,
 				59AF230B220898C2000DE2BE /* VertexArray.cpp in Sources */,
 				590DF07422076A6C00423E33 /* main.cpp in Sources */,
+				59CA41BC220BC04400E5E659 /* Bird.cpp in Sources */,
 				59D47D492207CC82004766A1 /* WindowManager.cpp in Sources */,
 				599471502209E02F00E49EDE /* stb_image.cpp in Sources */,
 				59D47D462207C6E6004766A1 /* InputHandler.cpp in Sources */,
