@@ -65,7 +65,7 @@ Matrix4f Matrix4f::rotate(float angle) {
     return result;
 }
 
-Matrix4f Matrix4f::operator*(Matrix4f& matrix4f) {
+Matrix4f Matrix4f::operator*(const Matrix4f& matrix4f) {
     Matrix4f result;
 
     for (int y = 0; y < 4; y++) {

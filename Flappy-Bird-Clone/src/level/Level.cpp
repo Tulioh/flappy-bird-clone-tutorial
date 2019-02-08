@@ -8,9 +8,8 @@
 
 #include "Level.h"
 
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-
+#include "math/Matrix4f.h"
+#include "math/Vector3f.h"
 #include "graphics/ShadersManager.h"
 
 Level::Level()
@@ -42,6 +41,7 @@ Level::Level()
                                                                            indices, indicesCount,
                                                                            textureCoordinates, textureCoordinatesCount));
     m_backgroundTexture = std::shared_ptr<Texture>(new Texture("resources/textures/bg.jpg"));
+    
     m_bird = std::shared_ptr<Bird>(new Bird());
 }
 
@@ -61,7 +61,8 @@ void Level::Render() {
     m_backgroundVertexArray->Bind();
     
     for (int i = m_map; i < m_map + 4; i++) {
-        glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(i * 10 + m_xScroll * 0.03f, 0, 0));
+        Vector3f backgroundPosition = Vector3f(i * 10 + m_xScroll * 0.03f, 0, 0);
+        Matrix4f translation = Matrix4f::translate(backgroundPosition);
         ShadersManager::getInstance().getBackgroundShader()->SetUniformMat4f("vw_matrix", translation);
         m_backgroundVertexArray->Draw();
     }

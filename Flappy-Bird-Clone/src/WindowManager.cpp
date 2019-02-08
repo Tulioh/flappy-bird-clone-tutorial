@@ -10,9 +10,8 @@
 
 #include <iostream>
 #include <chrono>
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
 
+#include "math/Matrix4f.h"
 #include "graphics/GLDebugger.h"
 #include "graphics/ShadersManager.h"
 #include "InputHandler.h"
@@ -54,7 +53,7 @@ WindowManager::WindowManager()
     
     GLCall(glActiveTexture(GL_TEXTURE0 + 0));
     
-    glm::mat4 pr_matrix = glm::ortho<float>(-10.0f, 10.0f, -10.0f * 9.0f / 16.0f, 10.0f * 9.0f / 16.0f, -1.0, 1.0f);
+    Matrix4f pr_matrix = Matrix4f::orthographic(-10.0f, 10.0f, -10.0f * 9.0f / 16.0f, 10.0f * 9.0f / 16.0f, -1.0, 1.0f);
     
     ShadersManager::getInstance().init();
     ShadersManager::getInstance().getBackgroundShader()->SetUniformMat4f("pr_matrix", pr_matrix);

@@ -11,8 +11,6 @@
 #include "graphics/ShadersManager.h"
 #include "InputHandler.h"
 
-#include "glm/gtc/matrix_transform.hpp"
-
 Bird::Bird()
 {
     float verticies[] = {
@@ -61,9 +59,11 @@ void Bird::Fall() {
 
 void Bird::Render() {
     ShadersManager::getInstance().getBirdShader()->Bind();
-    glm::mat4 translation = glm::translate(glm::mat4(1.0f), m_position);
-    ShadersManager::getInstance().getBirdShader()->SetUniformMat4f("ml_matrix", translation);
+    ShadersManager::getInstance().getBirdShader()->SetUniformMat4f("ml_matrix", Matrix4f::translate(m_position) * Matrix4f::rotate(m_rotation));
     m_texture->Bind();
     m_mesh->Render();
     ShadersManager::getInstance().getBirdShader()->Unbind();
+    m_texture->Unbind();
+    m_mesh->Unbind();
 }
+

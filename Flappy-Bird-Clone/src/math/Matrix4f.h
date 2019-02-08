@@ -18,7 +18,7 @@ public:
     static Matrix4f translate(Vector3f& vector);
     static Matrix4f rotate(float angle);
     
-    Matrix4f operator*(Matrix4f& matrix4f);
+    Matrix4f operator*(const Matrix4f& matrix4f);
     const float& operator[](unsigned int position) const;
     
 private:

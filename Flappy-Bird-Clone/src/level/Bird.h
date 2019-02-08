@@ -9,12 +9,12 @@
 #ifndef Bird_h
 #define Bird_h
 
+#include <memory>
+
 #include "graphics/VertexArray.h"
 #include "graphics/Texture.h"
-
-#include <memory>
-#include "glm/glm.hpp"
-#include "glm/vec3.hpp"
+#include "math/Matrix4f.h"
+#include "math/Vector3f.h"
 
 class Bird {
 public:
@@ -29,7 +29,7 @@ private:
     std::shared_ptr<VertexArray> m_mesh;
     std::shared_ptr<Texture> m_texture;
     
-    glm::vec3 m_position;
+    Vector3f m_position;
     float m_rotation = 0.0f;
     float m_delta = 0.0f;
 };
