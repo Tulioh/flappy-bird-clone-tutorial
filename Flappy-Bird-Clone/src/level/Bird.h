@@ -20,11 +20,14 @@ class Bird {
 public:
     Bird();
     
+    void Fall();
     void Update();
     void Render();
-private:
-    void Fall();
+    void Reset();
     
+    inline int GetY() const { return m_position.y; }
+    inline int GetSize() const { return SIZE; }
+private:
     const float SIZE = 1.0f;
     std::shared_ptr<VertexArray> m_mesh;
     std::shared_ptr<Texture> m_texture;

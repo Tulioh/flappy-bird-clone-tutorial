@@ -13,6 +13,12 @@
 
 #include <iostream>
 
+VertexArray::VertexArray(int count)
+: m_count(count), m_ibo(0)
+{
+    GLCall(glGenVertexArrays(1, &m_vao));
+}
+
 VertexArray::VertexArray(float vertices[], unsigned int verticesCount,
                          unsigned int indices[], unsigned indicesCount,
                          float textureCoordinates[], unsigned int textureCoordinatesCount)
@@ -43,26 +49,37 @@ VertexArray::VertexArray(float vertices[], unsigned int verticesCount,
 }
 
 VertexArray::~VertexArray() {
+    glBindVertexArray(0);
     glDeleteVertexArrays(1, &m_vao);
+    glDeleteBuffers(1, &m_vbo);
     if (m_tbo > 0) {
         glDeleteVertexArrays(1, &m_tbo);
     }
-    glDeleteBuffers(1, &m_vbo);
-    glDeleteBuffers(1, &m_ibo);
+    if (m_ibo > 0) {
+        glDeleteBuffers(1, &m_ibo);
+    }
 }
 
 void VertexArray::Bind() {
     GLCall(glBindVertexArray(m_vao));
-    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo));
+    if (m_ibo > 0) {
+        GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo));
+    }
 }
 
 void VertexArray::Unbind() {
     GLCall(glBindVertexArray(0));
-    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+    if (m_ibo > 0) {
+        GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+    }
 }
 
 void VertexArray::Draw() {
-    GLCall(glDrawElements(GL_TRIANGLES, m_count, GL_UNSIGNED_INT, 0));
+    if (m_ibo > 0) {
+        GLCall(glDrawElements(GL_TRIANGLES, m_count, GL_UNSIGNED_INT, 0));
+    } else {
+        GLCall(glDrawArrays(GL_TRIANGLES, 0, m_count));
+    }
 }
 
 void VertexArray::Render() {

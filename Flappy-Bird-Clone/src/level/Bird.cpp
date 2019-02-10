@@ -14,10 +14,10 @@
 Bird::Bird()
 {
     float verticies[] = {
-        -SIZE / 2.0f, -SIZE / 2.0f, 0.1f,
-        -SIZE / 2.0f,  SIZE / 2.0f, 0.1f,
-         SIZE / 2.0f,  SIZE / 2.0f, 0.1f,
-         SIZE / 2.0f, -SIZE / 2.0f, 0.1f
+        -SIZE / 2.0f, -SIZE / 2.0f, 0.2f,
+        -SIZE / 2.0f,  SIZE / 2.0f, 0.2f,
+         SIZE / 2.0f,  SIZE / 2.0f, 0.2f,
+         SIZE / 2.0f, -SIZE / 2.0f, 0.2f
     };
     unsigned int verticesCount = sizeof(verticies);
     
@@ -67,3 +67,8 @@ void Bird::Render() {
     m_mesh->Unbind();
 }
 
+void Bird::Reset() {
+    m_rotation = 0.0f;
+    m_delta = 0.0f;
+    m_position.Reset();
+}

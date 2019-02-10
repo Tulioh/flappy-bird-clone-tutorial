@@ -16,6 +16,12 @@ public:
     
     Vector3f(float x, float y, float z)
         : x(x), y(y), z(z) {}
+    
+    inline void Reset() {
+        x = 0;
+        y = 0;
+        z = 0;
+    }
 
     float x, y, z;
 };

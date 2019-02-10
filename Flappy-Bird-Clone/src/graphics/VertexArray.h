@@ -14,6 +14,7 @@ public:
     VertexArray(float vertices[], unsigned int verticesCount,
                 unsigned int indices[], unsigned indicesCount,
                 float textureCoordinates[], unsigned int textureCoordinatesCount);
+    VertexArray(int count);
     ~VertexArray();
     
     void Bind();

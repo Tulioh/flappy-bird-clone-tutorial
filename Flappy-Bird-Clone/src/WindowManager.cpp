@@ -52,6 +52,8 @@ WindowManager::WindowManager()
     }
     
     GLCall(glActiveTexture(GL_TEXTURE0 + 0));
+    GLCall(glEnable(GL_BLEND));
+    GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
     
     Matrix4f pr_matrix = Matrix4f::orthographic(-10.0f, 10.0f, -10.0f * 9.0f / 16.0f, 10.0f * 9.0f / 16.0f, -1.0, 1.0f);
     
@@ -67,7 +69,9 @@ WindowManager::WindowManager()
 }
 
 WindowManager::~WindowManager() {
-    glfwDestroyWindow(m_window);
+    if (m_window) {
+        glfwDestroyWindow(m_window);
+    }
     glfwTerminate();
 }
 

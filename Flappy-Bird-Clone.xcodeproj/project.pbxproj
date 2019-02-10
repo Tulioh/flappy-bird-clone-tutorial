@@ -44,6 +44,7 @@
 		590DF0DA22076CD800423E33 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		590DF0DC22076D0400423E33 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../../usr/local/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		590DF0DE22076E0600423E33 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
+		591A41D1220FC5C5009B260F /* fade.shader */ = {isa = PBXFileReference; lastKnownFileType = text; path = fade.shader; sourceTree = "<group>"; };
 		5939261C220B3BBC009937AA /* pipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pipe.png; sourceTree = "<group>"; };
 		5939261D220B3BBC009937AA /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		5939261E220B3BBC009937AA /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird.png; sourceTree = "<group>"; };
@@ -558,6 +559,7 @@
 				599471562209EE5C00E49EDE /* background.shader */,
 				59CA41BD220BC28300E5E659 /* bird.shader */,
 				59412BDE220DE09200FE6220 /* pipe.shader */,
+				591A41D1220FC5C5009B260F /* fade.shader */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
