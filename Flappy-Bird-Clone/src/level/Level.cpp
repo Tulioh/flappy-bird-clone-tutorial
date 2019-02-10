@@ -130,6 +130,7 @@ void Level::Update() {
 void Level::Render() {
     m_backgroundTexture->Bind();
     ShadersManager::getInstance().getBackgroundShader()->Bind();
+    ShadersManager::getInstance().getBackgroundShader()->SetUniform2f("bird", 0, m_bird->GetY());
     m_backgroundVertexArray->Bind();
     
     for (int i = m_map; i < m_map + 4; i++) {
@@ -153,6 +154,7 @@ void Level::Render() {
 
 void Level::RenderPipes() {
     ShadersManager::getInstance().getPipeShader()->Bind();
+    ShadersManager::getInstance().getPipeShader()->SetUniform2f("bird", 0, m_bird->GetY());
     Vector3f position(m_xScroll * 0.05f, 0.0f, 0.0f);
     ShadersManager::getInstance().getPipeShader()->SetUniformMat4f("vw_matrix", Matrix4f::translate(position));
     m_pipeTexture->Bind();
