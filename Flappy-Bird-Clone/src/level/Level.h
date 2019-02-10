@@ -10,11 +10,13 @@
 #define Level_h
 
 #include <memory>
+#include <vector>
 
 #include "graphics/VertexArray.h"
 #include "graphics/Texture.h"
 
 #include "Bird.h"
+#include "Pipe.h"
 
 class Level {
 public:
@@ -24,12 +26,25 @@ public:
     
     void Render();
 private:
-    int m_xScroll;
-    int m_map;
+    void CreateBackground();
+    void CreatePipes();
+    void RenderPipes();
+    void UpdatePipes();
     
-    std::shared_ptr<VertexArray> m_backgroundVertexArray;
-    std::shared_ptr<Texture> m_backgroundTexture;
-    std::shared_ptr<Bird> m_bird;
+    int m_xScroll = 0;
+    int m_map = 0;
+    
+    int m_index = 0;
+    
+    std::unique_ptr<VertexArray> m_backgroundVertexArray;
+    std::unique_ptr<Texture> m_backgroundTexture;
+    
+    std::unique_ptr<VertexArray> m_pipeVertexArray;
+    std::unique_ptr<Texture> m_pipeTexture;
+    
+    std::unique_ptr<Bird> m_bird;
+    std::vector<Pipe> m_pipes;
+    
 };
 
 #endif /* Level_h */

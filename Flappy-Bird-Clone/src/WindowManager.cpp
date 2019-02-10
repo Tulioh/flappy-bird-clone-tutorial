@@ -60,6 +60,8 @@ WindowManager::WindowManager()
     ShadersManager::getInstance().getBackgroundShader()->SetUniform1i("u_Texture", 0);
     ShadersManager::getInstance().getBirdShader()->SetUniformMat4f("pr_matrix", pr_matrix);
     ShadersManager::getInstance().getBirdShader()->SetUniform1i("u_Texture", 0);
+    ShadersManager::getInstance().getPipeShader()->SetUniformMat4f("pr_matrix", pr_matrix);
+    ShadersManager::getInstance().getPipeShader()->SetUniform1i("u_Texture", 0);
     
     m_level = std::shared_ptr<Level>(new Level());
 }

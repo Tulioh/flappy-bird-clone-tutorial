@@ -30,9 +30,11 @@ public:
     
     inline Shader* getBackgroundShader() { return m_backgroundShader.get(); }
     inline Shader* getBirdShader() { return m_birdShader.get(); }
+    inline Shader* getPipeShader() { return m_pipeShader.get(); }
 private:
     std::shared_ptr<Shader> m_backgroundShader;
     std::shared_ptr<Shader> m_birdShader;
+    std::shared_ptr<Shader> m_pipeShader;
 };
 
 #endif /* ShadersManager_h */

@@ -14,10 +14,10 @@
 Bird::Bird()
 {
     float verticies[] = {
-        -SIZE / 2.0f, -SIZE / 2.0f, -0.1f,
-        -SIZE / 2.0f,  SIZE / 2.0f, -0.1f,
-         SIZE / 2.0f,  SIZE / 2.0f, -0.1f,
-         SIZE / 2.0f, -SIZE / 2.0f, -0.1f
+        -SIZE / 2.0f, -SIZE / 2.0f, 0.1f,
+        -SIZE / 2.0f,  SIZE / 2.0f, 0.1f,
+         SIZE / 2.0f,  SIZE / 2.0f, 0.1f,
+         SIZE / 2.0f, -SIZE / 2.0f, 0.1f
     };
     unsigned int verticesCount = sizeof(verticies);
     

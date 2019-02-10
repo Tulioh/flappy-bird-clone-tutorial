@@ -11,4 +11,5 @@
 void ShadersManager::init() {
     m_backgroundShader = std::shared_ptr<Shader>(new Shader("resources/shaders/background.shader"));
     m_birdShader = std::shared_ptr<Shader>(new Shader("resources/shaders/bird.shader"));
+    m_pipeShader = std::shared_ptr<Shader>(new Shader("resources/shaders/pipe.shader"));
 }

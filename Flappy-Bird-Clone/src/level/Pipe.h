@@ -6,9 +6,24 @@
 //  Copyright © 2019 Túlio Henrique. All rights reserved.
 //
 
-#ifndef Pipe_hpp
-#define Pipe_hpp
+#ifndef Pipe_h
+#define Pipe_h
 
-#include <stdio.h>
+#include "math/Vector3f.h"
+#include "math/Matrix4f.h"
+#include "graphics/Texture.h"
+#include "graphics/VertexArray.h"
 
-#endif /* Pipe_hpp */
+class Pipe {
+public:
+    Pipe(float x, float y);
+    
+    inline float GetX() { return m_position.x; }
+    inline float GetY() { return m_position.y; }
+    inline Matrix4f& GetModelMatrix() { return m_mlMatrix; }
+private:
+    Vector3f m_position;
+    Matrix4f m_mlMatrix;
+};
+
+#endif /* Pipe_h */

@@ -11,6 +11,8 @@
 		590DF0DB22076CD800423E33 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 590DF0DA22076CD800423E33 /* OpenGL.framework */; };
 		590DF0DD22076D0400423E33 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 590DF0DC22076D0400423E33 /* libglfw.3.3.dylib */; };
 		590DF0DF22076E0600423E33 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 590DF0DE22076E0600423E33 /* libGLEW.2.1.0.dylib */; };
+		594643DC220D19900063492A /* Matrix4f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 594643DB220D19900063492A /* Matrix4f.cpp */; };
+		594643DF220D1EC60063492A /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 594643DD220D1EC60063492A /* Pipe.cpp */; };
 		599471492209DD3000E49EDE /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 599471472209DD3000E49EDE /* Level.cpp */; };
 		5994714C2209DFDE00E49EDE /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5994714A2209DFDE00E49EDE /* Texture.cpp */; };
 		599471502209E02F00E49EDE /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5994714F2209E02F00E49EDE /* stb_image.cpp */; };
@@ -45,6 +47,12 @@
 		5939261C220B3BBC009937AA /* pipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pipe.png; sourceTree = "<group>"; };
 		5939261D220B3BBC009937AA /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		5939261E220B3BBC009937AA /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird.png; sourceTree = "<group>"; };
+		59412BDE220DE09200FE6220 /* pipe.shader */ = {isa = PBXFileReference; lastKnownFileType = text; path = pipe.shader; sourceTree = "<group>"; };
+		594643D9220D19900063492A /* Vector3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3f.h; sourceTree = "<group>"; };
+		594643DA220D19900063492A /* Matrix4f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix4f.h; sourceTree = "<group>"; };
+		594643DB220D19900063492A /* Matrix4f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix4f.cpp; sourceTree = "<group>"; };
+		594643DD220D1EC60063492A /* Pipe.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
+		594643DE220D1EC60063492A /* Pipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		599471472209DD3000E49EDE /* Level.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		599471482209DD3000E49EDE /* Level.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		5994714A2209DFDE00E49EDE /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
@@ -512,6 +520,16 @@
 			path = textures;
 			sourceTree = "<group>";
 		};
+		594643D8220D19900063492A /* math */ = {
+			isa = PBXGroup;
+			children = (
+				594643D9220D19900063492A /* Vector3f.h */,
+				594643DA220D19900063492A /* Matrix4f.h */,
+				594643DB220D19900063492A /* Matrix4f.cpp */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
 		599471462209DD2700E49EDE /* level */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +537,8 @@
 				599471482209DD3000E49EDE /* Level.h */,
 				59CA41BA220BC04400E5E659 /* Bird.cpp */,
 				59CA41BB220BC04400E5E659 /* Bird.h */,
+				594643DD220D1EC60063492A /* Pipe.cpp */,
+				594643DE220D1EC60063492A /* Pipe.h */,
 			);
 			path = level;
 			sourceTree = "<group>";
@@ -537,6 +557,7 @@
 			children = (
 				599471562209EE5C00E49EDE /* background.shader */,
 				59CA41BD220BC28300E5E659 /* bird.shader */,
+				59412BDE220DE09200FE6220 /* pipe.shader */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -990,6 +1011,7 @@
 		59D47D422207BE5B004766A1 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				594643D8220D19900063492A /* math */,
 				599471462209DD2700E49EDE /* level */,
 				59AF2307220898A0000DE2BE /* graphics */,
 				590DF07322076A6C00423E33 /* main.cpp */,
@@ -1064,9 +1086,11 @@
 				59AF230B220898C2000DE2BE /* VertexArray.cpp in Sources */,
 				590DF07422076A6C00423E33 /* main.cpp in Sources */,
 				59CA41BC220BC04400E5E659 /* Bird.cpp in Sources */,
+				594643DC220D19900063492A /* Matrix4f.cpp in Sources */,
 				59D47D492207CC82004766A1 /* WindowManager.cpp in Sources */,
 				599471502209E02F00E49EDE /* stb_image.cpp in Sources */,
 				59D47D462207C6E6004766A1 /* InputHandler.cpp in Sources */,
+				594643DF220D1EC60063492A /* Pipe.cpp in Sources */,
 				59AF2303220888D8000DE2BE /* Shader.cpp in Sources */,
 				599471532209E2A100E49EDE /* ShadersManager.cpp in Sources */,
 			);
